@@ -1,7 +1,7 @@
 <template>
-    <v-card class="pa-4" elevation="1" rounded="0">
-    <h1>Title</h1>
-    <v-chip class="pa-4" variant="flat" color="success">
+    <v-card class="py-2 px-8" elevation="1" rounded="0">
+    <h2>{{ title }}</h2>
+    <v-chip class="pa-4" variant="flat" color="#0AAE75">
         {{ currentDate() }}
     </v-chip>
     </v-card>
@@ -11,10 +11,16 @@
 <script>
   export default {
     name: 'app-title',
+    props: {
+        title: {
+            type: String,
+            required: true
+        }
+    },
     methods: {
     currentDate() {
         const current = new Date();
-        const todayDate = `วัน${this.getFormatDay()}ที่ ${current.getDate()} ${this.getFormatMonth()} พ.ศ. ${current.getFullYear()+543}`;
+        const todayDate = `วัน${this.getFormatDay()}ที่ ${current.getDate()} ${this.getFormatMonth()} ค.ศ. ${current.getFullYear()}`;
         return todayDate;
     },
     getFormatDay() {

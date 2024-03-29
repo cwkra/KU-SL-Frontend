@@ -8,6 +8,14 @@
         rounded="xl"
         class="mx-8 mt-2">
         <v-row class="mx-4 my-2">
+        <router-link :to="{name: 'admin-announcement-form'}">
+        <v-btn 
+            flat
+            rounded="lg" 
+            class="submit"
+        >สร้าง
+        </v-btn>
+        </router-link>
         </v-row>
             <card-header title="ข่าวสารนิสิต"/>
             <v-container
@@ -22,6 +30,24 @@
                     <v-card-title>{{ item.header }}</v-card-title>
                     <v-input prepend-icon="mdi-clock-outline" class="mx-4 text-grey">{{ formatDate(item.announced_datetime) }}</v-input>
                     </v-col>
+                    <v-col cols="2" align="end">
+                        <div class="my-2 mx-4">
+                            <v-btn
+                            class="primary mx-2"
+                            rounded="xl"
+                            size="x-small"
+                            icon="mdi-pencil"
+                            @click="goToEdit(item)">
+                            </v-btn>
+                            <v-btn
+                            class="cancel"
+                            rounded="xl"
+                            size="x-small"
+                            icon="mdi-delete"
+                            @click="goToDelete(item)">
+                            </v-btn>
+                        </div>
+                    </v-col>
                 </v-row>
                     <v-textarea 
                         class="mx-4"
@@ -33,8 +59,7 @@
                         v-model="item.description" 
                         row-height="30"
                         rows="5"
-                        no-resize
-                        auto-grow/>
+                        no-resize/>
                 </v-card>
             </v-container>
         </v-card>
@@ -49,8 +74,9 @@ import CardHeader from '@/components/CardHeader.vue'
 import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import { useUserStore } from '@/store/users'
 import axios from 'axios'
+
 export default{
-    name: 'announcement',
+    name: 'admin-announcement',
     components: {
       AppNavbar,
       AppSidebar,
@@ -78,7 +104,7 @@ export default{
                 {
                     title: 'ข่าวสารนิสิต',
                     disabled: true,
-                    href: '/announcement'
+                    href: '/admin/announcement',
                 },
             ],
             announcementItems: []
@@ -127,6 +153,53 @@ export default{
                 return  hour + ':' + min + ' น.'
             }
         },
+        goToEdit(value) {
+            this.$router.push({
+            name: 'admin-announcement-detail',
+            params: {
+                id: value.id
+            }
+            })
+        },
+        goToDelete(value) {
+            this.$swal({
+                    title: value.header,
+                    text: 'ยืนยันการลบประกาศนี้ใช่หรือไม่',
+                    showCloseButton: true,
+                    confirmButtonText: "ยืนยัน",
+                    confirmButtonColor: "#0AAE75",
+                    cancelButtonText: "ยกเลิก",
+                    showCancelButton: true,
+                    cancelButtonColor: "#ED585A",
+                    icon: "warning",
+                    backdrop: false,
+                    }).then(result => {
+                        if (result.isConfirmed) {
+                            this.deleteItems(value)
+                        }
+                    })
+        },
+        deleteItems(value) {
+            axios.delete('announcement/announcements/'+value.id)
+            .then(response => {
+                this.$swal({
+                    title: 'ดำเนินการลบประกาศสำเร็จ',
+                    showCloseButton: true,
+                    confirmButtonText: "ตกลง",
+                    confirmButtonColor: "#0AAE75",
+                    icon: "success",
+                    backdrop: false,
+                    }).then(result => {
+                        if (result.isConfirmed || result.isClosed) {
+                            this.$router.push('/admin/announcement')
+                            this.$router.go(0)
+                        }
+                    })
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        }
     }
 }
 </script>

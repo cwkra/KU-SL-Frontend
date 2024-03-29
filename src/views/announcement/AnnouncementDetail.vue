@@ -26,7 +26,7 @@
         </v-btn>
         </router-link>
         </v-row>
-            <card-header title="สร้างข่าวสารนิสิต"/>
+            <card-header title="รายละเอียดข่าวสารนิสิต"/>
             <v-container>
                 <v-responsive max-width="360">
                     <p>หัวข้อเรื่อง</p>
@@ -65,7 +65,7 @@ import { useUserStore } from '@/store/users'
 import axios from 'axios'
 
 export default{
-    name: 'admin-announcement',
+    name: 'admin-announcement-detail',
     components: {
       AppNavbar,
       AppSidebar,
@@ -78,6 +78,9 @@ export default{
         return {
             userStore
         }
+    },
+    mounted() {
+        this.getAnnouncementItems()
     },
     data() {
         return {
@@ -101,9 +104,9 @@ export default{
                     href: '/admin/announcement'
                 },
                 {
-                    title: 'สร้างข่าวสารนิสิต',
+                    title: 'รายละเอียดข่าวสารนิสิต',
                     disabled: true,
-                    href: '/admin/announcement/create'
+                    href: '/admin/announcement/:id'
                 },
             ]
         }
@@ -114,12 +117,13 @@ export default{
                 header: this.header,
                 description: this.description
             }
+            const pathSplit = this.$route.path.split('/')
             console.log("form data: ", formData)
             if (formData.header!=null && formData.description!=null) {
-                axios.post('announcement/announcements/', formData)
+                axios.put('announcement/announcements/'+pathSplit[3]+'/', formData)
                 .then(response => {
                     this.$swal({
-                        title: 'สร้างข่าวสารนิสิตสำเร็จ',
+                        title: 'แก้ไขข่าวสารนิสิตสำเร็จ',
                         showCloseButton: true,
                         confirmButtonText: "ตกลง",
                         confirmButtonColor: "#0AAE75",
@@ -134,16 +138,27 @@ export default{
                 .catch(error => {
                     console.log(error)
                     this.$swal({
-                        title: 'สร้างข่าวสารนิสิตไม่สำเร็จ',
+                        title: 'แก้ไขข่าวสารนิสิตไม่สำเร็จ',
                         showCloseButton: true,
                         text: "กรุณาตรวจสอบข้อมูลอีกครั้ง",
                         confirmButtonText: "ตกลง",
                         confirmButtonColor: "#0AAE75",
                         icon: "error",
-                        backdrop: false
+                        backdrop: false,
                     });
                 })
             }
+        },
+        getAnnouncementItems() {
+            const pathSplit = this.$route.path.split('/')
+            axios.get('announcement/announcements/'+pathSplit[3])
+            .then(response => {
+                this.header = response.data.header
+                this.description = response.data.description
+            })
+            .catch(error => {
+                console.log(error)
+            })
         }
     }
 }

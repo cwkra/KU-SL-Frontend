@@ -1,10 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Sarabun');
 
 * {
     font-family: 'Kanit', sans-serif;
 }
 
+.add-choice-btn{
+    color: #C0C0C0 !important;
+    max-width: auto;
+    font-size-adjust: auto;
+    &:hover {  
+        transition: 0.4s !important;
+    }
+}
 .submit{
     max-width: auto;
     color: white !important;
@@ -56,16 +64,9 @@
       box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 35px -12px;
     }
 }
-.v-data-table th{
-    background-color: #0AAE75;
-    /* border-top-left-radius: 25px;
-    border-top-right-radius: 25px; */
-    color: #fff;
-}
 
 .v-data-table th {
     background-color: #0AAE75;
-    border-radius: 25px 25px 0 0;
     color: #fff;
 }
 
@@ -76,4 +77,31 @@
 .v-table {
     border-radius: 25px !important;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 35px -12px;
+}
+
+.v-avatar {
+    border: 10px solid #0AAE75!important;
+    background-color: #fff !important;
+}
+
+.router-sidebar {
+    color: #fff;
+    text-decoration: none;
+}
+
+.active-link {
+    background-color: #0AAE75;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.router-navbar {
+    color: #000;
+    text-decoration: none;
+}
+
+.router-logout {
+    color:#ED585A; 
+    text-decoration: none;
 }

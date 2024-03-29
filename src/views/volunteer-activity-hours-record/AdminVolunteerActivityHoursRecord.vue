@@ -2,22 +2,16 @@
     <app-sidebar/>
     <app-navbar/>
     <v-main>
-        <app-title title="บันทึกความประสงค์กู้ยืม"/>
+        <app-title title="บันทึกชั่วโมงกิจกรรมจิตอาสา"/>
         <breadcrumbs :items="items"/>
         <v-card 
         rounded="xl"
         class="mx-8 mt-2">
-        <v-row class="mx-4 my-2">
-        <router-link :to="{name: 'student-loan-request-record-form'}">
-        <v-btn 
-            flat
-            rounded="lg" 
-            class="submit"
-        >สร้าง
-        </v-btn>
-        </router-link>
+        <v-row class="mx-4 my-2" justify="end">
+            <v-col>
+            </v-col>
         </v-row>
-        <card-header title="บันทึกความประสงค์กู้ยืม"/>
+            <card-header title="บันทึกชั่วโมงกิจกรรมจิตอาสา"/>
             <app-table 
             :headers="headers"
             :items="tableItems"
@@ -31,21 +25,16 @@
 import AppNavbar from '@/components/AppNavbar.vue'
 import AppSidebar from '@/components/AppSidebar.vue'
 import AppTitle from '@/components/AppTitle.vue'
-import CardHeader from '@/components/CardHeader.vue'
-import AppTable from '@/components/AppTable.vue'
-import SearchBar from '@/components/SearchBar.vue'
 import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import { useUserStore } from '@/store/users'
 import axios from 'axios'
+
 export default{
-    name: 'student-loan-request-record-detail',
+    name: 'admin-volunteer-activity-hours-record',
     components: {
       AppNavbar,
       AppSidebar,
       AppTitle,
-      CardHeader,
-      AppTable,
-      SearchBar,
       Breadcrumbs
     },
     data() {
@@ -58,17 +47,20 @@ export default{
                     href: '/'
                 },
                 {
-                    title: 'บันทึกความประสงค์กู้ยืม',
+                    title: 'บันทึกชั่วโมงกิจกรรมจิตอาสา',
                     disabled: true,
-                    href: '/student-loan-request-record'
+                    href: '/admin/volunteer-activity-hours-record'
                 },
             ],
             headers: [
                 {
-                    title: 'ปีการศึกษา', value: 'academic_year', sortable: true
+                    title: 'ผู้ทำรายการ', value: 'borrower_name', sortable: true,
                 },
                 {
-                    title: 'ภาคการศึกษา', value: 'semester', sortable: true
+                    title: 'ชื่อกิจกรรม', value: 'name', sortable: true
+                },
+                {
+                    title: 'ชั่วโมงกิจกรรม', value: 'hours', sortable: true
                 },
                 {
                     title: 'วันที่ทำรายการ', value: 'create_date', sortable: true
@@ -77,10 +69,9 @@ export default{
                     title: 'สถานะ', value: 'status', sortable: true
                 },
                 {
-                    title: ' ', value: 'request_action'
+                    title: ' ', value: 'admin_activity_action'
                 }
             ]
-            
         }
     },
     mounted() {
@@ -94,9 +85,17 @@ export default{
     },
     methods: {
         getTableItems() {
-            axios.get('student-loan-request-record/student-loan-request-records/?borrower='+this.userStore.user.id) 
+            axios.get('volunteer-activities-hours-record/volunteer-activities-hours-records/') 
             .then(response => {
                 this.tableItems = response.data
+                for (let i = 0; i < this.tableItems.length; i++) {
+                    if (this.tableItems[i].status=='รอการยืนยัน') {
+                        console.log(this.tableItems)
+                        this.tableItems.splice(i, 1)
+                        i--
+                        console.log(this.tableItems)
+                    }
+                }
             })
             .catch(error => {
                 console.log(error)

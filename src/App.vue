@@ -1,65 +1,30 @@
 <template>
-  <v-app>
-    <app-sidebar/>
-    <app-navbar/>
-    <v-main>
-      <app-title/>
-      <breadcrumbs/>
-      <!-- <app-calendar /> -->
-      <!-- <app-table/> -->
-      <v-btn 
-        flat
-        rounded="lg" 
-        class="submit"
-        >บันทึก
-      </v-btn>
-      <v-btn 
-        flat
-        rounded="lg"
-        class="cancel">
-        ยกเลิก
-      </v-btn>
-      <v-btn 
-        flat
-        rounded="lg"
-        class="primary">
-        ย้อนกลับ
-      </v-btn>
-      <v-btn 
-        flat 
-        rounded="lg" 
-        class="primary">
-        พิมพ์เอกสาร
-      </v-btn>
-      <v-btn 
-        flat rounded="xl" 
-        variant="outlined"
-        class="info">
-        ดูรายละเอียด</v-btn>
-      <!-- <app-input /> -->
-    </v-main>
-  </v-app>
+    <v-app>
+        <router-view />
+    </v-app>
 </template>
 
 <script>
-import AppNavbar from './components/AppNavbar.vue'
-import AppSidebar from './components/AppSidebar.vue'
-import Breadcrumbs from './components/Breadcrumbs.vue'
-import AppCalendar from './components/AppCalendar.vue'
-import AppTitle from './components/AppTitle.vue'
-import AppInput from './components/AppInput.vue'
-import AppTable from './components/AppTable.vue'
+import { useUserStore } from '@/store/users'
+import axios from 'axios'
 
 export default {
-  name: 'app',
-  components: {
-    AppNavbar,
-    AppSidebar,
-    Breadcrumbs,
-    AppCalendar,
-    AppTitle,
-    AppInput,
-    AppTable
-  }
+    name: 'app',
+    setup() {
+        const userStore = useUserStore()
+        return {
+            userStore
+        }
+    },
+    beforeCreate() {
+        this.userStore.initStore()
+        const token = this.userStore.user.access
+
+        if (token) {
+            axios.defaults.headers.common["Authorization"] = "Bearer " + token;
+        } else {
+            axios.defaults.headers.common["Authorization"] = "";
+        }
+    }
 }
 </script>

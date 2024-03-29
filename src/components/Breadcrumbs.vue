@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-breadcrumbs :items="items" bg-color="success" rounded="pill" class="pl-10 pr-10 pt-2 pb-2 mt-4 ml-8 mr-8 mb-4">
+    <v-breadcrumbs :items="items" bg-color="#0AAE75" rounded="pill" class="px-10 py-2 my-2 mx-8 ">
       <template v-slot:divider>
         <v-icon icon="mdi-chevron-right"></v-icon>
       </template>
@@ -11,24 +11,11 @@
 <script>
   export default {
     name: 'breadcrumbs',
-    data: () => ({
-      items: [
-        {
-          title: 'Dashboard',
-          disabled: false,
-          href: '#',
-        },
-        {
-          title: 'Link 1',
-          disabled: false,
-          href: '#',
-        },
-        {
-          title: 'Link 2',
-          disabled: true,
-          href: '#',
-        },
-      ],
-    }),
+    props: {
+      items: {
+        type: Object,
+        required: true
+      }
+    }
   }
 </script>

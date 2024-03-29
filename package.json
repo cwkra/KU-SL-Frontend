@@ -13,12 +13,21 @@
     "@vee-validate/rules": "^4.12.5",
     "axios": "^1.6.7",
     "core-js": "^3.36.0",
+    "maska": "^2.1.11",
+    "pinia": "^2.1.7",
     "roboto-fontface": "*",
+    "sweetalert2": "^11.10.5",
     "v-calendar": "^3.1.2",
+    "v-mask": "^2.3.0",
     "vee-validate": "^4.12.5",
     "vue": "^3.3.0",
+    "vue-i18n": "^9.10.1",
     "vue-router": "^4.2.5",
-    "vuetify": "^3.0.0"
+    "vue-sweetalert2": "^5.0.5",
+    "vue3-toastify": "^0.2.1",
+    "vuetify": "^3.0.0",
+    "vuetify-more-component": "^1.4.1",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.0",

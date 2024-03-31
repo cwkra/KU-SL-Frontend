@@ -11,12 +11,12 @@
                         dot
                         floating
                         icon size="x-small"
-                        v-if="isRead"
+                        v-if="!isRead"
                     >
                     <v-icon icon="mdi-bell"></v-icon>
                     </v-badge>
                     <v-icon 
-                    v-if="!isRead"
+                    v-if="isRead"
                     icon="mdi-bell"></v-icon>
                 </v-btn>
             </template>
@@ -42,8 +42,8 @@
                     @click-once="readNotification(item)"
                     >
                     <v-list-item-subtitle class="my-1">{{ formatDate(item.create_date) }}</v-list-item-subtitle>
-                    <span v-if="item.is_read" class="dot mr-2">
-                    </span><span v-if="!item.is_read" class="dot-red mr-2"></span> {{ item.title }}
+                    <span v-if="!item.is_read" class="dot mr-2">
+                    </span><span v-if="item.is_read" class="dot-red mr-2"></span> {{ item.title }}
                 </v-list-item>
             </template>
             <p class="mx-8">{{ item.message }}</p>
@@ -132,10 +132,10 @@ export default{
         checkIsRead() {
             for (let i = 0; i < this.notificationItems.length; i++) {
                 if (this.notificationItems[i].is_read==false) {
-                    return this.isRead = true
+                    return this.isRead = false
                 }
             }
-            return this.isRead = false
+            return this.isRead = true
         },
         formatDate(value) {
             const date = new Date(value).toLocaleString().split('/')

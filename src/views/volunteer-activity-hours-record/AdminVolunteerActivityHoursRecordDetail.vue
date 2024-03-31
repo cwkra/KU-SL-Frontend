@@ -10,18 +10,14 @@
         <v-row class="mx-4 my-2 justify-space-between">
         <router-link :to="{name: 'admin-volunteer-activity-hours-record'}">
         <v-btn 
-            flat
-            rounded="lg" 
-            class="primary"
+            flat rounded="lg" class="primary"
         >ย้อนกลับ
         </v-btn>
         </router-link>
         <div v-if="status=='รอการตรวจสอบ'">
             <v-btn 
-            flat
-            rounded="lg" 
-            class="submit mx-2"
-            @click="approve"
+            flat rounded="lg" 
+            class="submit mx-2" @click="approve"
             >ผ่าน
             </v-btn>
             <v-btn 
@@ -49,7 +45,6 @@
                     placeholder="ชื่อกิจกรรม"
                     v-model="name"/>
                     </v-col>
-
                     <v-col cols="5">
                     <p>ประเภทกิจกรรม</p>
                     <v-text-field 
@@ -62,7 +57,6 @@
                     v-model="category"/>
                     </v-col>
                 </v-row>
-
                 <v-row no-gutters justify="space-between" class="mx-16">
                     <v-col cols="5">
                     <p>ชั่วโมงกิจกรรม</p>
@@ -76,7 +70,6 @@
                     class="center-text"
                     v-model="hours"/>
                     </v-col>
-
                     <v-col cols="5">
                     <p>สถานที่จัดกิจกรรม</p>
                     <v-text-field 
@@ -102,7 +95,6 @@
                     type="date"
                     v-model="event_date"/>
                     </v-col>
-
                     <v-col cols="5">
                     <p>ปีการศึกษา</p>
                     <v-text-field 
@@ -122,7 +114,6 @@
                     rounded="0"
                     :src="verification"></v-img>
                     </v-col>
-
                     <v-col cols="5">
                     <p>สถานะ</p>
                     <v-text-field 

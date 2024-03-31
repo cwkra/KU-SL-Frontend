@@ -4,27 +4,17 @@
     <v-main>
         <app-title title="ข่าวสารนิสิต"/>
         <breadcrumbs :items="items"/>
-        <v-card 
-        rounded="xl"
-        class="mx-8 mt-2">
+        <v-card rounded="xl" class="mx-8 mt-2">
         <v-row class="mx-4 my-2">
         <router-link :to="{name: 'admin-announcement-form'}">
-        <v-btn 
-            flat
-            rounded="lg" 
-            class="submit"
-        >สร้าง
-        </v-btn>
+        <v-btn flat rounded="lg" class="submit">สร้าง</v-btn>
         </router-link>
         </v-row>
             <card-header title="ข่าวสารนิสิต"/>
-            <v-container
-            v-for="(item, i) in announcementItems"
+            <v-container v-for="(item, i) in announcementItems"
             :key="i"
             :value="item">
-                <v-card
-                elevation="4"
-                rounded="xl">
+                <v-card elevation="4" rounded="xl">
                 <v-row class="justify-space-between">
                     <v-col>
                     <v-card-title>{{ item.header }}</v-card-title>
@@ -33,29 +23,21 @@
                     <v-col cols="2" align="end">
                         <div class="my-2 mx-4">
                             <v-btn
-                            class="primary mx-2"
-                            rounded="xl"
-                            size="x-small"
-                            icon="mdi-pencil"
+                            class="primary mx-2" rounded="xl"
+                            size="x-small" icon="mdi-pencil"
                             @click="goToEdit(item)">
                             </v-btn>
                             <v-btn
-                            class="cancel"
-                            rounded="xl"
-                            size="x-small"
-                            icon="mdi-delete"
+                            class="cancel" rounded="xl"
+                            size="x-small" icon="mdi-delete"
                             @click="goToDelete(item)">
                             </v-btn>
                         </div>
                     </v-col>
                 </v-row>
                     <v-textarea 
-                        class="mx-4"
-                        bg-color="#D9D9D9"
-                        readonly 
-                        variant="toned"
-                        rounded="lg"
-                        placeholder="คำอธิบาย"
+                        class="mx-4" bg-color="#D9D9D9" readonly 
+                        variant="toned" rounded="lg" placeholder="คำอธิบาย"
                         v-model="item.description" 
                         row-height="30"
                         rows="5"

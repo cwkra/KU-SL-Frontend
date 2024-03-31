@@ -9,58 +9,42 @@
         class="mx-8 mt-2">
         <v-row class="mx-4 my-2 justify-space-between">
         <router-link :to="{name: 'volunteer-activity-hours-record'}">
-        <v-btn 
-            flat
-            rounded="lg" 
-            class="primary"
-        >ย้อนกลับ
+        <v-btn flat rounded="lg" class="primary">ย้อนกลับ
         </v-btn>
         </router-link>
         <div v-if="status=='รอการยืนยัน'&&mode=='view'">
             <v-btn 
-            flat
-            rounded="lg" 
-            class="submit mx-2"
+            flat rounded="lg" class="submit mx-2"
             @click="sendToApprove"
             >ยื่นตรวจสอบ
             </v-btn>
             <v-btn 
-            flat
-            rounded="lg" 
-            class="primary mx-2"
+            flat rounded="lg" class="primary mx-2"
             @click="mode='edit'"
             >แก้ไข
             </v-btn>
             <v-btn 
-            flat
-            rounded="lg" 
-            class="cancel mx-2"
+            flat rounded="lg" class="cancel mx-2"
             @click="goToDelete"
             >ลบ
             </v-btn>
         </div>
         <div v-if="status=='รอการยืนยัน'&&mode=='edit'">
             <v-btn 
-                flat
-                rounded="lg" 
-                class="submit mx-2"
-                type="submit"
+                flat rounded="lg" 
+                class="submit mx-2" type="submit"
                 @click="onSubmit"
             >บันทึก
             </v-btn>
             <v-btn 
-                flat
-                rounded="lg" 
-                class="submit mx-2"
-                type="submit"
+                flat rounded="lg" 
+                class="submit mx-2" type="submit"
                 @click="onSecondSubmit"
             >บันทึกและยื่นตรวจสอบ
             </v-btn>
             <v-btn 
-            flat
-            rounded="lg" 
-            class="cancel mx-2"
-            @click="mode='view'"
+            flat rounded="lg" 
+            class="cancel mx-2" @click="mode='view'"
             >ยกเลิก
             </v-btn>
         </div>
@@ -82,7 +66,6 @@
                     placeholder="ชื่อกิจกรรม"
                     v-model="name"/>
                     </v-col>
-
                     <v-col cols="5">
                     <p>ประเภทกิจกรรม</p>
                     <v-text-field 
@@ -95,7 +78,6 @@
                     v-model="category"/>
                     </v-col>
                 </v-row>
-
                 <v-row no-gutters justify="space-between" class="mx-16">
                     <v-col cols="5">
                     <p>ชั่วโมงกิจกรรม</p>
@@ -109,7 +91,6 @@
                     class="center-text"
                     v-model="hours"/>
                     </v-col>
-
                     <v-col cols="5">
                     <p>สถานที่จัดกิจกรรม</p>
                     <v-text-field 
@@ -125,48 +106,32 @@
                 <v-row no-gutters justify="space-between" class="mx-16">
                     <v-col cols="5">
                     <p>วันที่จัดกิจกรรม</p>
-                    <v-text-field 
-                    bg-color="#D9D9D9"
-                    readonly
-                    density="compact"
-                    rounded="pill"
-                    variant="outlined"
-                    placeholder="วันที่จัดกิจกรรม"
-                    type="date"
+                    <v-text-field bg-color="#D9D9D9"
+                    readonly density="compact"
+                    rounded="pill" variant="outlined"
+                    placeholder="วันที่จัดกิจกรรม" type="date"
                     v-model="event_date">
                     </v-text-field>
                     </v-col>
-
                     <v-col cols="5">
                     <p>ปีการศึกษา</p>
-                    <v-text-field 
-                    bg-color="#D9D9D9"
-                    readonly
-                    density="compact"
-                    rounded="pill" 
-                    variant="outlined"
-                    placeholder="ปีการศึกษา"
-                    v-model="academic_year"/>
+                    <v-text-field bg-color="#D9D9D9"
+                    readonly density="compact"
+                    rounded="pill" variant="outlined"
+                    placeholder="ปีการศึกษา" v-model="academic_year"/>
                     </v-col>
                 </v-row>
                 <v-row no-gutters justify="space-between" class="mx-16">
                     <v-col cols="5">
                     <p>หลักฐานการเข้าร่วมกิจกรรม</p>
-                    <v-img
-                    rounded="0"
-                    :src="verification"></v-img>
+                    <v-img rounded="0" :src="verification"></v-img>
                     </v-col>
-
                     <v-col cols="5">
                     <p>สถานะ</p>
-                    <v-text-field 
-                    bg-color="#D9D9D9"
-                    readonly
-                    density="compact"
-                    rounded="pill" 
-                    variant="outlined"
-                    placeholder="สถานะ"
-                    v-model="status"/>
+                    <v-text-field bg-color="#D9D9D9"
+                    readonly density="compact"
+                    rounded="pill" variant="outlined"
+                    placeholder="สถานะ" v-model="status"/>
                     </v-col>
                 </v-row>
             </v-card>
@@ -178,55 +143,38 @@
                     <v-col cols="5">
                     <p>ชื่อกิจกรรม</p>
                     <v-text-field 
-                    clearable
-                    density="compact"
-                    rounded="pill" 
-                    variant="outlined"
-                    placeholder="ชื่อกิจกรรม"
-                    :rules="[rules.name_required]"
-                    v-model="name"/>
+                    clearable density="compact" rounded="pill" 
+                    variant="outlined" placeholder="ชื่อกิจกรรม"
+                    :rules="[rules.name_required]" v-model="name"/>
                     </v-col>
-
                     <v-col cols="5">
                     <p>ประเภทกิจกรรม</p>
                     <v-select 
-                    density="compact"
-                    rounded="pill" 
-                    variant="outlined"
-                    placeholder="ประเภทกิจกรรม"
+                    density="compact" rounded="pill" 
+                    variant="outlined" placeholder="ประเภทกิจกรรม"
                     :rules="[rules.category_required]"
-                    :items="category_items"
-                    v-model="category"/>
+                    :items="category_items" v-model="category"/>
                     </v-col>
                 </v-row>
-
                 <v-row no-gutters justify="space-between" class="mx-16">
                     <v-col cols="5">
                     <p>ชั่วโมงกิจกรรม</p>
                     <v-text-field 
                     prepend-icon="mdi-minus-circle"
                     append-icon="mdi-plus-circle"
-                    density="compact"
-                    rounded="pill" 
-                    variant="outlined"
-                    type="number"
-                    :min="1"
-                    @click:append="increaseHours"
+                    density="compact" rounded="pill" 
+                    variant="outlined" type="number"
+                    :min="1" @click:append="increaseHours"
                     @click:prepend="decreaseHours"
-                    hide-spin-buttons
-                    placeholder="ชั่วโมงกิจกรรม"
-                    class="center-text"
-                    :rules="rules.hours_rules"
+                    hide-spin-buttons placeholder="ชั่วโมงกิจกรรม"
+                    class="center-text" :rules="rules.hours_rules"
                     v-model="hours"/>
                     </v-col>
-
                     <v-col cols="5">
                     <p>สถานที่จัดกิจกรรม</p>
                     <v-text-field 
-                    clearable
-                    density="compact"
-                    rounded="pill" 
-                    variant="outlined"
+                    clearable density="compact"
+                    rounded="pill" variant="outlined"
                     placeholder="สถานที่จัดกิจกรรม"
                     :rules="[rules.location_name_required]"
                     v-model="location_name"/>
@@ -236,25 +184,18 @@
                     <v-col cols="5">
                     <p>วันที่จัดกิจกรรม</p>
                     <v-text-field 
-                    density="compact"
-                    rounded="pill" 
-                    variant="outlined"
-                    placeholder="วันที่จัดกิจกรรม"
-                    type="date"
-                    :max="getToday()"
+                    density="compact" rounded="pill" 
+                    variant="outlined" placeholder="วันที่จัดกิจกรรม"
+                    type="date" :max="getToday()"
                     :rules="[rules.event_date_required]"
                     v-model="event_date"/>
                     </v-col>
-
                     <v-col cols="5">
                     <p>ปีการศึกษา</p>
                     <v-text-field 
-                    readonly
-                    bg-color="#d9d9d9"
-                    density="compact"
-                    rounded="pill" 
-                    variant="outlined"
-                    placeholder="ปีการศึกษา"
+                    readonly bg-color="#d9d9d9"
+                    density="compact" rounded="pill" 
+                    variant="outlined" placeholder="ปีการศึกษา"
                     v-model="academic_year"/>
                     </v-col>
                 </v-row>
@@ -262,20 +203,16 @@
                     <v-col cols="5">
                     <p>หลักฐานการเข้าร่วมกิจกรรม</p>
                     <v-file-input
-                    density="compact"
-                    clearable
-                    rounded="pill" 
-                    variant="outlined"
+                    density="compact" clearable
+                    rounded="pill" variant="outlined"
                     placeholder="หลักฐานการเข้าร่วมกิจกรรม"
                     accept="image/png, image/jpeg"
-                    chips
-                    ref="file"
+                    chips ref="file"
                     v-model="new_verification"/>
                     <v-img
                     rounded="0"
                     :src="verification"></v-img>
                     </v-col>
-
                     <v-col cols="5">
                     <p>สถานะ</p>
                     <v-text-field 

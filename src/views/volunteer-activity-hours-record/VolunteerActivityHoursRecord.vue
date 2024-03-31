@@ -10,25 +10,14 @@
         <v-row class="mx-4 my-2">
             <router-link :to="{name: 'volunteer-activity-hours-record-form'}">
             <v-btn 
-            flat
-            rounded="lg" 
-            class="submit"
-            >สร้าง
-            </v-btn>
+            flat rounded="lg" class="submit">สร้าง</v-btn>
             </router-link>
-            <v-btn 
-            @click="goToPrint"
-            flat
-            rounded="lg" 
+            <v-btn @click="goToPrint" flat rounded="lg" 
             class="primary mx-2"
             :disabled="(totalHours<36)&&(borrower_loan_request.length==0)"
-            >พิมพ์เอกสาร
-            </v-btn>
-            
-            
+            >พิมพ์เอกสาร</v-btn>
         </v-row>
             <card-header title="บันทึกชั่วโมงกิจกรรมจิตอาสา"/>
-            
             <v-card variant="outlined" rounded="pill" class="ma-2">
                 <v-row class="align-center px-16">
                     <v-responsive max-width="100">
@@ -36,19 +25,15 @@
                     </v-responsive>
                     <v-responsive max-width="200">
                         <v-select 
-                        class="mt-5" 
-                        density="compact" 
-                        rounded="pill" 
-                        variant="outlined" 
-                        placeholder="ปีการศึกษา" 
-                        :items="selectYearItems"
-                        v-model="academic_year"
-                        ></v-select>
+                        class="mt-5" density="compact" 
+                        rounded="pill" variant="outlined" 
+                        placeholder="ปีการศึกษา" :items="selectYearItems"
+                        v-model="academic_year"></v-select>
                     </v-responsive>
-                    <v-responsive class="text-end mr-4"><p :style="{color: this.getTextColor()}">รวม: {{ this.totalHours }} /36 ชั่วโมง</p></v-responsive>
+                    <v-responsive class="text-end mr-4"><p :style="{color: this.getTextColor()}">
+                        รวม: {{ this.totalHours }} /36 ชั่วโมง</p></v-responsive>
                 </v-row>
             </v-card>
-
             <app-table 
             :headers="headers"
             :items="tableItems"

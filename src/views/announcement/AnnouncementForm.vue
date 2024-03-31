@@ -31,24 +31,17 @@
                 <v-responsive max-width="360">
                     <p>หัวข้อเรื่อง</p>
                     <v-text-field 
-                    density="compact"
-                    clearable 
-                    rounded="pill" 
-                    variant="outlined"
-                    placeholder="หัวข้อเรื่อง"
-                    v-model="header" 
+                    density="compact" clearable 
+                    rounded="pill" variant="outlined"
+                    placeholder="หัวข้อเรื่อง" v-model="header" 
                     :rules="[rules.header_required]"/>
                     </v-responsive>
                     <p>คำอธิบาย</p>
                     <v-textarea 
-                    clearable 
-                    variant="outlined"
-                    rounded="lg"
-                    placeholder="คำอธิบาย"
-                    v-model="description" 
-                    row-height="30"
-                    rows="5"
-                    no-resize
+                    clearable variant="outlined"
+                    rounded="lg" placeholder="คำอธิบาย"
+                    v-model="description" row-height="30"
+                    rows="5" no-resize
                     :rules="[rules.description_required]"/>
             </v-container>
         </v-form>

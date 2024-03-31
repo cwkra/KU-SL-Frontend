@@ -5,23 +5,16 @@
         <app-title title="ตรวจสอบเงื่อนไขคุณสมบัติผู้กู้ยืม"/>
         <breadcrumbs :items="items"/>
         <v-card 
-        rounded="xl"
-        class="mx-8 mt-2 mb-4">
+        rounded="xl" class="mx-8 mt-2 mb-4">
         <v-row class="mx-4 my-2">
         <router-link :to="{name: 'qualifications-question-form'}">
-        <v-btn 
-            flat
-            rounded="lg" 
-            class="submit"
-        >สร้าง
-        </v-btn>
+        <v-btn flat rounded="lg" class="submit">สร้าง</v-btn>
         </router-link>
         </v-row>
             <card-header title="ตรวจสอบเงื่อนไขคุณสมบัติผู้กู้ยืม"/>
             <v-container>
                 <v-card 
-                rounded="xl"
-                elevation="4"
+                rounded="xl" elevation="4"
                 class="pa-2 my-4"
                 v-for="(item, i) in questionsList"
                 :key="i"
@@ -31,17 +24,13 @@
                     <v-col cols="2" align="end">
                         <div class="my-2 mx-4">
                             <v-btn
-                            class="primary mx-2"
-                            rounded="xl"
-                            size="x-small"
-                            icon="mdi-pencil"
+                            class="primary mx-2" rounded="xl"
+                            size="x-small" icon="mdi-pencil"
                             @click="goToEdit(item)">
                             </v-btn>
                             <v-btn
-                            class="cancel"
-                            rounded="xl"
-                            size="x-small"
-                            icon="mdi-delete"
+                            class="cancel" rounded="xl"
+                            size="x-small" icon="mdi-delete"
                             @click="goToDelete(item)">
                             </v-btn>
                         </div>

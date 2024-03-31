@@ -82,11 +82,7 @@
                     <td class="text-center">{{ item.hours }}</td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td></td><td></td><td></td><td></td><td></td>
                     <td class="text-center">รวม: </td>
                     <td class="text-center">{{ totalHours }} ชั่วโมง</td>
                 </tr>

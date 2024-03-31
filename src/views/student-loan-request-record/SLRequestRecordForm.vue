@@ -9,89 +9,52 @@
         class="mx-8 mt-2">
         <v-form @submit.prevent="onSubmit">
         <v-row class="mx-4 my-2" justify="end">
-        <v-btn 
-            flat
-            rounded="lg" 
-            class="submit mx-2"
-            type="submit"
-        >บันทึก
-        </v-btn>
+        <v-btn flat rounded="lg" class="submit mx-2" type="submit">บันทึก</v-btn>
         <router-link :to="{name: 'student-loan-request-record'}">
-        <v-btn 
-            flat
-            rounded="lg" 
-            class="cancel mx-2"
-            type="cancel"
-        >ยกเลิก
-        </v-btn>
+        <v-btn flat rounded="lg" class="cancel mx-2" type="cancel">ยกเลิก</v-btn>
         </router-link>
         </v-row>
         <card-header title="สร้างบันทึกความประสงค์กู้ยืม"/>
-            <v-card 
-            class="mx-16 my-4 px-4 py-2"
-            rounded="xl">
+            <v-card class="mx-16 my-4 px-4 py-2" rounded="xl">
                 <v-row no-gutters justify="space-between" class="mx-16">
                     <v-col cols="5">
                     <p>ชื่อ-นามสกุล</p>
                     <v-text-field 
-                    density="compact"
-                    bg-color="#D9D9D9"
-                    readonly
-                    rounded="pill" 
-                    variant="outlined"
-                    placeholder="ชื่อ-นามสกุล"
-                    v-model="name"/>
+                    density="compact" bg-color="#D9D9D9"
+                    readonly rounded="pill" variant="outlined"
+                    placeholder="ชื่อ-นามสกุล" v-model="name"/>
                     </v-col>
-
                     <v-col cols="5">
                     <p>รหัสประชาชน</p>
                     <v-text-field 
-                    density="compact"
-                    bg-color="#D9D9D9"
-                    readonly
-                    rounded="pill" 
-                    variant="outlined"
-                    placeholder="รหัสประชาชน"
-                    v-model="identity_card_number"/>
+                    density="compact" bg-color="#D9D9D9"
+                    readonly rounded="pill" variant="outlined"
+                    placeholder="รหัสประชาชน" v-model="identity_card_number"/>
                     </v-col>
                 </v-row>
-
                 <v-row no-gutters justify="space-between" class="mx-16">
                     <v-col cols="5">
                     <p>รหัสนิสิต</p>
                     <v-text-field 
-                    density="compact"
-                    bg-color="#D9D9D9"
-                    readonly
-                    rounded="pill" 
-                    variant="outlined"
-                    placeholder="รหัสนิสิต"
-                    v-model="student_id_number"/>
+                    density="compact" bg-color="#D9D9D9"
+                    readonly rounded="pill" variant="outlined"
+                    placeholder="รหัสนิสิต" v-model="student_id_number"/>
                     </v-col>
-
                     <v-col cols="5">
                     <p>คณะ</p>
                     <v-text-field 
-                    density="compact"
-                    bg-color="#D9D9D9"
-                    readonly
-                    rounded="pill" 
-                    variant="outlined"
-                    placeholder="คณะ"
-                    v-model="faculty"/>
+                    density="compact" bg-color="#D9D9D9"
+                    readonly rounded="pill" variant="outlined"
+                    placeholder="คณะ" v-model="faculty"/>
                     </v-col>
                 </v-row>
                 <v-row no-gutters justify="space-between" class="mx-16">
                     <v-col cols="5">
                     <p>ภาควิชา</p>
                     <v-text-field 
-                    density="compact"
-                    bg-color="#D9D9D9"
-                    readonly
-                    rounded="pill" 
-                    variant="outlined"
-                    placeholder="ภาควิชา"
-                    v-model="department"/>
+                    density="compact" bg-color="#D9D9D9"
+                    readonly rounded="pill" variant="outlined"
+                    placeholder="ภาควิชา" v-model="department"/>
                     </v-col>
                 </v-row>
             </v-card>
@@ -102,38 +65,26 @@
                     <v-col cols="5">
                     <p>ปีการศึกษา</p>
                     <v-text-field
-                    density="compact"
-                    rounded="pill" 
-                    variant="outlined"
-                    placeholder="ปีการศึกษา"
-                    readonly
-                    bg-color="#D9D9D9"
-                    v-model="academic_year"/>
+                    density="compact" rounded="pill" 
+                    variant="outlined" placeholder="ปีการศึกษา"
+                    readonly bg-color="#D9D9D9" v-model="academic_year"/>
                     </v-col>
-
                     <v-col cols="5">
                     <p>ภาคการศึกษา</p>
                     <v-select
-                    density="compact"
-                    rounded="pill" 
-                    variant="outlined"
-                    placeholder="ภาคการศึกษา"
-                    v-model="semester"
-                    :items="semester_items"/>
+                    density="compact" rounded="pill" 
+                    variant="outlined" placeholder="ภาคการศึกษา"
+                    v-model="semester" :items="semester_items"/>
                     </v-col>
                 </v-row>
                 <v-row no-gutters justify="space-between" class="mx-16">
                     <v-col cols="5">
                     <p>ค่าธรรมเนียมการศึกษา</p>
                     <v-text-field 
-                    density="compact"
-                    :min="1"
-                    clearable
-                    rounded="pill" 
-                    variant="outlined"
+                    density="compact" :min="1"
+                    clearable rounded="pill" variant="outlined"
                     placeholder="ค่าธรรมเนียมการศึกษา"
-                    type="number"
-                    v-model="tuition_fees"
+                    type="number" v-model="tuition_fees"
                     :rules="rules.tuition_fees_rules"/>
                     </v-col>
                 </v-row>

@@ -10,48 +10,33 @@
         <v-form @submit.prevent>
         <v-row class="mx-4 my-2" justify="end">
         <v-btn 
-            flat
-            rounded="lg" 
-            class="submit mx-2"
-            type="submit"
-            @click="onSubmit"
+            flat rounded="lg" class="submit mx-2"
+            type="submit" @click="onSubmit"
         >บันทึก
         </v-btn>
         <v-btn 
-            flat
-            rounded="lg" 
-            class="submit mx-2"
-            type="submit"
+            flat rounded="lg" class="submit mx-2" type="submit"
             @click="onSecondSubmit"
         >บันทึกและยื่นตรวจสอบ
         </v-btn>
         <router-link :to="{name: 'volunteer-activity-hours-record'}">
-        <v-btn 
-            flat
-            rounded="lg" 
-            class="cancel mx-2"
-            type="cancel"
+        <v-btn flat rounded="lg" class="cancel mx-2" type="cancel"
         >ยกเลิก
         </v-btn>
         </router-link>
         </v-row>
             <card-header title="สร้างบันทึกชั่วโมงกิจกรรมจิตอาสา"/>
-            <v-card 
-            class="mx-16 my-4 pa-4"
-            rounded="xl">
+            <v-card class="mx-16 my-4 pa-4" rounded="xl">
                 <v-row no-gutters justify="space-between" class="mx-16">
                     <v-col cols="5">
                     <p>ชื่อกิจกรรม</p>
                     <v-text-field 
-                    clearable
-                    density="compact"
-                    rounded="pill" 
-                    variant="outlined"
+                    clearable density="compact"
+                    rounded="pill" variant="outlined"
                     placeholder="ชื่อกิจกรรม"
                     :rules="[rules.name_required]"
                     v-model="name"/>
                     </v-col>
-
                     <v-col cols="5">
                     <p>ประเภทกิจกรรม</p>
                     <v-select 
@@ -64,7 +49,6 @@
                     v-model="category"/>
                     </v-col>
                 </v-row>
-
                 <v-row no-gutters justify="space-between" class="mx-16">
                     <v-col cols="5">
                     <p>ชั่วโมงกิจกรรม</p>
@@ -72,10 +56,8 @@
                     prepend-icon="mdi-minus-circle"
                     append-icon="mdi-plus-circle"
                     density="compact"
-                    rounded="pill" 
-                    variant="outlined"
-                    type="number"
-                    :min="1"
+                    rounded="pill" variant="outlined"
+                    type="number" :min="1"
                     @click:append="increaseHours"
                     @click:prepend="decreaseHours"
                     hide-spin-buttons
@@ -84,7 +66,6 @@
                     :rules="rules.hours_rules"
                     v-model="hours"/>
                     </v-col>
-
                     <v-col cols="5">
                     <p>สถานที่จัดกิจกรรม</p>
                     <v-text-field 
@@ -110,7 +91,6 @@
                     :rules="[rules.event_date_required]"
                     v-model="event_date"/>
                     </v-col>
-
                     <v-col cols="5">
                     <p>ปีการศึกษา</p>
                     <v-text-field 

@@ -10,20 +10,14 @@
         <v-form @submit.prevent>
         <v-row class="mx-4 my-2" justify="end">
         <v-btn 
-            flat
-            :disabled="mode=='edit'"
-            rounded="lg" 
-            class="submit mx-2"
-            type="submit"
-            @click="onSubmit"
+            flat :disabled="mode=='edit'" rounded="lg" 
+            class="submit mx-2" type="submit" @click="onSubmit"
         >บันทึก
         </v-btn>
         <router-link :to="{name: 'admin-qualifications-question'}">
         <v-btn 
-            flat
-            rounded="lg" 
-            class="cancel mx-2"
-            type="cancel"
+            flat rounded="lg" 
+            class="cancel mx-2" type="cancel"
         >ยกเลิก
         </v-btn>
         </router-link>
@@ -33,17 +27,11 @@
                 <v-row justify="space-between" class="mx-8">
                     <v-col cols=5>
                     <v-textarea
-                    density="compact"
-                    no-resize
-                    auto-grow
-                    rows="1"
-                    clearable
-                    placeholder="คำถาม"
-                    label="คำถาม"
-                    variant="underlined"
-                    rounded="xl"
-                    v-model="question"
-                    :rules="[rules.question_required]">
+                    density="compact" no-resize
+                    auto-grow rows="1" clearable
+                    placeholder="คำถาม" label="คำถาม"
+                    variant="underlined" rounded="xl"
+                    v-model="question" :rules="[rules.question_required]">
                     </v-textarea>
                     </v-col>
                 </v-row>
@@ -56,16 +44,11 @@
                         </v-responsive>
                     <v-col cols="5">
                     <v-text-field 
-                        density="compact"
-                        hide-details="auto"
-                        clearable
-                        variant="outlined"
-                        rounded="pill"
-                        placeholder="คำตอบ"
-                        v-model="answer.choice"
-                        :append-icon="show ? 'mdi-minus-circle' : ''"
-                        :rules="[rules.question_choice_rules]"
-                        @click:append="remove(k)"
+                        density="compact" hide-details="auto"
+                        clearable variant="outlined"
+                        rounded="pill" placeholder="คำตอบ"
+                        v-model="answer.choice" :append-icon="show ? 'mdi-minus-circle' : ''"
+                        :rules="[rules.question_choice_rules]" @click:append="remove(k)"
                     ></v-text-field>
                     </v-col>
                     </v-row>
@@ -83,12 +66,9 @@
                     </v-row>
                     <span>
                         <v-btn 
-                        rounded="pill" 
-                        class="add-choice-btn mx-2 my-4"
-                        variant="outlined"
-                        @click="add()" 
-                        v-if="mode=='create'"
-                        v-show="k == answers.length-1"
+                        rounded="pill" class="add-choice-btn mx-2 my-4"
+                        variant="outlined" @click="add()" 
+                        v-if="mode=='create'" v-show="k == answers.length-1"
                         >เพิ่มคำตอบ +
                         </v-btn>
                     </span>
@@ -97,19 +77,13 @@
             <v-divider class="mx-8"></v-divider>
             <v-card-actions class="mx-8 my-2">
                 <v-btn 
-                    flat
-                    rounded="lg" 
-                    class="submit mx-2"
-                    v-if="mode=='create'"
-                    @click="switchMode"
+                    flat rounded="lg" 
+                    class="submit mx-2" v-if="mode=='create'" @click="switchMode"
                 >เลือกคำตอบที่ผ่านเงื่อนไข
                 </v-btn>
                 <v-btn 
-                    variant="outlined"
-                    rounded="lg" 
-                    class="info mx-2"
-                    v-if="mode=='edit'"
-                    @click="mode='create'"
+                    variant="outlined" rounded="lg" 
+                    class="info mx-2" v-if="mode=='edit'" @click="mode='create'"
                 >เสร็จสิ้น
                 </v-btn>
             </v-card-actions>

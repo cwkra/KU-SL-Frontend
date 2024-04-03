@@ -211,7 +211,7 @@ export default{
         },
         getAcademicYear() {
             const current = new Date();
-            if (current.getMonth() < 3) {
+            if (current.getMonth() < 4) {
                 const year = current.getFullYear()+542
                 return year
             } else {

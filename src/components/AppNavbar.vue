@@ -42,8 +42,8 @@
                     @click-once="readNotification(item)"
                     >
                     <v-list-item-subtitle class="my-1">{{ formatDate(item.create_date) }}</v-list-item-subtitle>
-                    <span v-if="!item.is_read" class="dot mr-2">
-                    </span><span v-if="item.is_read" class="dot-red mr-2"></span> {{ item.title }}
+                    <span v-if="item.is_read" class="dot mr-2">
+                    </span><span v-if="!item.is_read" class="dot-red mr-2"></span> {{ item.title }}
                 </v-list-item>
             </template>
             <p class="mx-8">{{ item.message }}</p>
